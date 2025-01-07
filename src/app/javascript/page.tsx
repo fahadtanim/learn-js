@@ -1,7 +1,6 @@
 import { withMotionWrapped } from '@/components/atoms'
 import Typography from '@/components/atoms/Typography'
 import { Alert, Button, HR, List, ListItem } from 'flowbite-react'
-import { AnimatePresence } from 'motion/react'
 import Link from 'next/link'
 import { HiInformationCircle, HiOutlineArrowRight } from 'react-icons/hi'
 const MotionList = withMotionWrapped(List)

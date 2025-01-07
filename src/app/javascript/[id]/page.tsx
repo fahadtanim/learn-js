@@ -1,9 +1,7 @@
 import PageContent from '@/components/molecules/PageContent'
-import ScrollToTop from '@/components/atoms/ScrollToTop'
 import { JSBlog } from '@/data/javascript/javascript'
 import { Button } from 'flowbite-react'
 import Link from 'next/link'
-import { useRef } from 'react'
 import { HiOutlineArrowRight, HiOutlineArrowLeft } from 'react-icons/hi'
 export default async function Page({
   params

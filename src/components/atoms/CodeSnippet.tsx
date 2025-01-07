@@ -21,7 +21,7 @@ const CodeSnippet = ({ children }: { children: string }) => {
           parser: 'babel',
           plugins: [babelPlugin, estreePlugin]
         })
-        setCodeblock((prev) => result)
+        setCodeblock((_prev) => result)
       } catch (error) {
         console.error('Failed to format code block:', error)
       }
