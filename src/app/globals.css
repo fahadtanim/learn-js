@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: rgb(17 24 39);
     --foreground: #ededed;
   }
 }
@@ -18,4 +18,18 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.perspective-container {
+  perspective: 1000px;
+}
+
+.tilt {
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg);
+}
+
+.tilt:hover {
+  transform-style: preserve-3d;
+  transform: rotateX(6deg) rotateY(12deg);
 }
