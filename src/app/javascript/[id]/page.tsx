@@ -3,12 +3,18 @@ import { JSBlog } from '@/data/javascript/javascript'
 import { Button } from 'flowbite-react'
 import Link from 'next/link'
 import { HiOutlineArrowRight, HiOutlineArrowLeft } from 'react-icons/hi'
+
+export async function generateStaticParams() {
+  // Extract all possible `id` values from your data source
+  return JSBlog.map((post) => ({ id: post.id })) // This should return an array of objects, each with an `id` key
+}
+
 export default async function Page({
   params
 }: {
   params: Promise<{ id: string }>
 }) {
-  const id = (await params).id
+  const { id } = await params
   const post = JSBlog.find((post) => post.id === id)
 
   return (
