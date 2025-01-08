@@ -8,6 +8,7 @@ import {
 import { HR, List, ListItem } from 'flowbite-react'
 import * as motion from 'motion/react-client'
 import { DesignBlock } from '@/components/organisms'
+import { LoadingSkeleton } from '@/components/molecules'
 
 const MotionList = withMotionWrapped(List)
 
@@ -1190,6 +1191,7 @@ Array.prototype.pMap = function(callback) {
         <Typography mode="h2">
           JavaScript <Typography mode="gradient">Scope</Typography>
         </Typography>
+        <LoadingSkeleton />
       </>
     )
   }

@@ -4,6 +4,8 @@ import './globals.css'
 import { ThemeModeScript } from 'flowbite-react'
 import '@/css/global.css'
 import { AppNavbar, AppSidebar } from '@/components/organisms'
+import { Suspense } from 'react'
+import { LoadingSkeleton } from '@/components/molecules'
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin']
@@ -35,7 +37,9 @@ export default function RootLayout({
         <AppNavbar />
         <div className="flex min-h-[calc(100vh-54px)]">
           <AppSidebar />
-          <div className="overflow-y-auto w-full max-h-full">{children}</div>
+          <div className="overflow-y-auto w-full max-h-full">
+            <Suspense fallback={<LoadingSkeleton />}>{children}</Suspense>
+          </div>
         </div>
       </body>
     </html>
