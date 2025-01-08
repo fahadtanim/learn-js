@@ -10,11 +10,11 @@ export default function AppNavbar() {
     {
       label: 'JavaScript',
       href: '/javascript'
-    },
-    {
-      label: 'TypeScript',
-      href: '/typescript'
     }
+    // {
+    //   label: 'TypeScript',
+    //   href: '/typescript'
+    // }
   ]
 
   return (
@@ -23,7 +23,7 @@ export default function AppNavbar() {
       rounded
       className="bg-gray-900 sticky w-full z-20 top-0 start-0 border-b border-gray-600"
     >
-      <Navbar.Brand as={Link} href="https://flowbite-react.com">
+      <Navbar.Brand as={Link} href="/">
         <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
           learn-js with fahad
         </span>

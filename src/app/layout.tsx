@@ -32,13 +32,15 @@ export default function RootLayout({
         <ThemeModeScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen overflow-hidden`}
       >
         <AppNavbar />
         <div className="flex min-h-[calc(100vh-54px)]">
           <AppSidebar />
-          <div className="overflow-y-auto w-full max-h-full">
-            <Suspense fallback={<LoadingSkeleton />}>{children}</Suspense>
+          <div className="container max-h-full overflow-hidden">
+            <Suspense fallback={<LoadingSkeleton />}>
+              <div className="container">{children}</div>
+            </Suspense>
           </div>
         </div>
       </body>

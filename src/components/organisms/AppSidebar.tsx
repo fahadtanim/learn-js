@@ -1,9 +1,11 @@
 'use client'
 
 import { JsMenu } from '@/config/menuConfig'
-import { CustomFlowbiteTheme, Sidebar } from 'flowbite-react'
+import { Button, CustomFlowbiteTheme, Sidebar } from 'flowbite-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import { FaBars } from 'react-icons/fa'
 
 const SidebarTheme: CustomFlowbiteTheme['sidebar'] = {
   root: {
@@ -86,56 +88,74 @@ const SidebarTheme: CustomFlowbiteTheme['sidebar'] = {
 }
 
 export default function AppSidebar() {
+  const [open, setOpen] = useState(false)
   const pathname = usePathname()
   console.log('pathname', pathname)
   const menuConfig = pathname.includes('/javascript') ? JsMenu : []
+
   return (
-    <Sidebar
-      aria-label="Sidebar with multi-level dropdown example"
-      theme={SidebarTheme}
-    >
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          {menuConfig.map((item, index) => {
-            if (item.isGroup) {
-              return (
-                <Sidebar.Collapse
-                  key={index}
-                  label={`${item.id} - ${item.groupLabel}`}
-                  open={true}
-                >
-                  {item.groupItems.map((subItem, subIndex) => {
-                    const active = pathname === subItem.link
-                    return (
-                      <Sidebar.Item
-                        href={subItem.link}
-                        key={subIndex}
-                        as={Link}
-                        className={`${active ? 'bg-gray-700' : ''}`}
-                      >
-                        {`${subItem.id} - ${subItem.label}`}
-                      </Sidebar.Item>
-                    )
-                  })}
-                </Sidebar.Collapse>
-              )
-            } else {
-              const active = pathname === item.groupLink
-              return (
-                <Sidebar.Item
-                  href={item.groupLink}
-                  key={index}
-                  icon={item.icon}
-                  as={Link}
-                  className={`${active ? 'bg-gray-700' : ''}`}
-                >
-                  {item.groupLabel}
-                </Sidebar.Item>
-              )
-            }
-          })}
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
-    </Sidebar>
+    <>
+      <div
+        className={`md:w-[21rem] ${open ? 'w-[50rem] sm:w-[50rem]' : 'w-0 sm:w-0'} min-h-[calc(100vh-54px)] overflow-x-hidden bg-gray-800 transition-all duration-300 ease-in-out`}
+      >
+        <Sidebar
+          aria-label="Sidebar with multi-level dropdown example"
+          theme={SidebarTheme}
+        >
+          <Sidebar.Items>
+            <Sidebar.ItemGroup>
+              {menuConfig.map((item, index) => {
+                if (item.isGroup) {
+                  return (
+                    <Sidebar.Collapse
+                      key={index}
+                      label={`${item.id} - ${item.groupLabel}`}
+                      open={true}
+                    >
+                      {item.groupItems.map((subItem, subIndex) => {
+                        const active = pathname === subItem.link
+                        return (
+                          <Sidebar.Item
+                            href={subItem.link}
+                            key={subIndex}
+                            as={Link}
+                            className={`${active ? 'bg-gray-700' : ''}`}
+                            onClick={() => setOpen(false)}
+                          >
+                            {`${subItem.id} - ${subItem.label}`}
+                          </Sidebar.Item>
+                        )
+                      })}
+                    </Sidebar.Collapse>
+                  )
+                } else {
+                  const active = pathname === item.groupLink
+                  return (
+                    <Sidebar.Item
+                      href={item.groupLink}
+                      key={index}
+                      icon={item.icon}
+                      as={Link}
+                      onClick={() => setOpen(false)}
+                      className={`${active ? 'bg-gray-700' : ''}`}
+                    >
+                      {item.groupLabel}
+                    </Sidebar.Item>
+                  )
+                }
+              })}
+            </Sidebar.ItemGroup>
+          </Sidebar.Items>
+        </Sidebar>
+      </div>
+      <div className="md:hidden sm:block fixed top-[4.5rem] right-0">
+        <Button
+          className="from-green-400 to-cyan-600 bg-gradient-to-br shadow-lg rounded-full py-2 focus:outline-none focus:ring-0 active:ring-0 active:outline-none hover:from-green-600 hover:to-cyan-900 hover:text-white transition-all sm:scale-75 scale-75 md:scale-100"
+          onClick={() => setOpen(!open)}
+        >
+          <FaBars className="text-gray-300 w-6 h-6" />
+        </Button>
+      </div>
+    </>
   )
 }
