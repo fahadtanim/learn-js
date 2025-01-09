@@ -1,13 +1,13 @@
 'use client'
 
 import React, { useRef } from 'react'
-import ScrollToTop from '../atoms/ScrollToTop'
+import ScrollToTop from './ScrollToTop'
 
 type PageContentProps = {
-  content: React.ReactNode
+  children: React.ReactNode
 }
 
-export default function PageContent({ content }: PageContentProps) {
+export default function PageContent({ children }: PageContentProps) {
   const scrollableDivRef = useRef<HTMLDivElement | null>(null)
   return (
     <>
@@ -16,7 +16,7 @@ export default function PageContent({ content }: PageContentProps) {
         ref={scrollableDivRef}
       >
         <div className="container">
-          {content}
+          {children}
           <ScrollToTop scrollableDivRef={scrollableDivRef} />
         </div>
       </div>

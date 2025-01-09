@@ -1,8 +1,8 @@
 'use client'
 
-import { Button } from 'flowbite-react'
 import React, { useState, useEffect } from 'react'
 import { FaJetFighterUp } from 'react-icons/fa6'
+import { Button } from '../atoms'
 type ScrollToTopProps = {
   scrollableDivRef: React.RefObject<HTMLDivElement | null>
 }
@@ -45,7 +45,7 @@ const ScrollToTop = ({ scrollableDivRef }: ScrollToTopProps) => {
       <Button
         size="xs"
         onClick={scrollToTop}
-        className={`fixed ${isVisible ? 'opacity-100 mt-0' : 'opacity-0 mt-10'} top-[75vh] right-10 p-3 rounded-full text-gray-800 font-bold from-green-400 to-cyan-600 bg-gradient-to-br hover:from-green-600 hover:to-cyan-900 hover:text-white transition-all focus:ring-0 focus:outline-none active:ring-0 active:outline-none`}
+        className={`fixed ${isVisible ? 'opacity-100 mt-0' : 'opacity-0 mt-10'} top-[75vh] right-10 p-3 rounded-full`}
       >
         <span className="flex justify-center items-center gap-3">
           <FaJetFighterUp /> Back to top

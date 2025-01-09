@@ -1,11 +1,12 @@
 'use client'
 
 import { JsMenu } from '@/config/menuConfig'
-import { Button, CustomFlowbiteTheme, Sidebar } from 'flowbite-react'
+import { CustomFlowbiteTheme, Sidebar } from 'flowbite-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { FaBars } from 'react-icons/fa'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { Button } from '../atoms'
 
 const SidebarTheme: CustomFlowbiteTheme['sidebar'] = {
   root: {
@@ -96,7 +97,7 @@ export default function AppSidebar() {
   return (
     <>
       <div
-        className={`md:w-[21rem] ${open ? 'w-[50rem] sm:w-[50rem]' : 'w-0 sm:w-0'} min-h-[calc(100vh-54px)] overflow-x-hidden bg-gray-800 transition-all duration-300 ease-in-out`}
+        className={`relative !z-10 ${open ? 'flex-shrink-0 w-[320px]' : 'sm:w-0 w-0 md:w-[320px]'} min-h-[calc(100vh-54px)] overflow-x-hidden bg-gray-800 transition-all duration-300 ease-in-out`}
       >
         <Sidebar
           aria-label="Sidebar with multi-level dropdown example"
@@ -148,12 +149,17 @@ export default function AppSidebar() {
           </Sidebar.Items>
         </Sidebar>
       </div>
-      <div className="md:hidden sm:block fixed top-[4.5rem] right-0">
+      <div className="md:hidden sm:block relative ml-[-1rem] p-0 mt-3">
         <Button
-          className="from-green-400 to-cyan-600 bg-gradient-to-br shadow-lg rounded-full py-2 focus:outline-none focus:ring-0 active:ring-0 active:outline-none hover:from-green-600 hover:to-cyan-900 hover:text-white transition-all sm:scale-75 scale-75 md:scale-100"
+          mode="primary"
+          className={`shadow-lg rounded-tr-full rounded-br-full`}
           onClick={() => setOpen(!open)}
         >
-          <FaBars className="text-gray-300 w-6 h-6" />
+          {open ? (
+            <FaChevronLeft className="text-gray-300 w-6 h-6" />
+          ) : (
+            <FaChevronRight className="text-gray-300 w-6 h-6" />
+          )}
         </Button>
       </div>
     </>

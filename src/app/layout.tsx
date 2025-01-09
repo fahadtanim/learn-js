@@ -32,7 +32,7 @@ export default function RootLayout({
         <ThemeModeScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen overflow-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen overflow-hidden bg-gray-900`}
       >
         <AppNavbar />
         <div className="flex min-h-[calc(100vh-54px)]">
