@@ -1050,7 +1050,12 @@ Array.prototype.pMap = function(callback) {
           executed, the Global Execution Context is also removed from the call
           stack.
         </Typography>
-        <motion.div className="flex bg-gray-700 justify-center items-center rounded-md flex-col p-4 w-5/12 mb-4">
+        <motion.div
+          initial={{ opacity: 0, marginLeft: 100 }}
+          whileInView={{ opacity: 1, marginLeft: 0 }}
+          transition={{ duration: 0.75 }}
+          className="flex bg-gray-700 justify-center items-center rounded-md flex-col p-4 w-5/12 mb-4"
+        >
           <div className="border border-sky-600">
             <div>
               <div className="text-center p-2 mb-2 perspactive-container">
@@ -1191,7 +1196,84 @@ Array.prototype.pMap = function(callback) {
         <Typography mode="h2">
           JavaScript <Typography mode="gradient">Scope</Typography>
         </Typography>
-        <LoadingSkeleton />
+        <Typography mode="h6">What is Scope?</Typography>
+        <Typography>
+          Scope is a fundamental concept in programming languages that underpins
+          the behavior of variables, functions, and other declarations in any
+          programming languanges.
+        </Typography>
+        <Typography>
+          Scope refers to the visibility and accessibility of variables,
+          functions, and other declarations in a programming language. It
+          determines how a variable, function, or other entity can be accessed
+          and used within different parts of a program.
+        </Typography>
+
+        <Typography>
+          At its core, scope in JavaScript refers to the context or environment
+          in which variables are declared and can be accessed. It dictates the
+          visibility and lifetime of a variable, determining where in your code
+          a particular variable is valid and accessible.
+        </Typography>
+        <Typography>
+          Each binding (variables, functions, and other declarations) has a
+          scope, which is the part of the program in which the binding is
+          visible.{' '}
+          <Typography mode="b-text">
+            For bindings definde outside of any function or block, the scope is
+            the whole program, you can refer to such bindings wherever you want
+          </Typography>
+          . These are called{' '}
+          <Typography mode="b-text">global bindings</Typography>.
+        </Typography>
+        <Typography>
+          <Typography mode="b-text">
+            But bindings created for function parameters or declared inside a
+            fucntion or block can be referenced only within that function or
+            block
+          </Typography>
+          . These are called{' '}
+          <Typography mode="b-text">local bindings</Typography>.
+        </Typography>
+        <AlertBox mode="info">
+          <Typography className="!mb-0">
+            <Typography mode="b-text" className="!text-blue-400">
+              Bindings: Declarations such as variables, functions and other
+              decalarations are called bindings.
+            </Typography>
+          </Typography>
+        </AlertBox>
+        <Typography>Let's learn about different types of scope...</Typography>
+        <Typography mode="h6">Global Scope</Typography>
+        <Typography>
+          In JavaScript, global scope is the widest scope available. Variables
+          declared in global scope are accessible from anywhere in your code,
+          whether it's inside functions, conditional statements, loops, or other
+          blocks of code. You can think of global scope as the "public square"
+          of your program, where everyone can see and access what's going on.
+        </Typography>
+        <Typography>
+          Everything you declare in global scope is like putting up a billboard
+          in the square for everyone to see. Any function or code block within
+          your program can read and modify these global variables.
+        </Typography>
+
+        <Typography mode="h6">Local Scope</Typography>
+        <Typography>
+          Local scope in JavaScript is like a private room within a building –
+          it's an enclosed space where variables are only accessible from within
+          that specific room. When you declare a variable in local scope, it is
+          limited in visibility to the block of code, function, or conditional
+          statement in which it is defined.
+        </Typography>
+        <Typography>
+          Let's say you've declared variables in a function, now every time the
+          function is called, new instances of these variables are created. This
+          provides some isolation between functions. Each function call acts in
+          its own little world (it's local environement) and can often be
+          understood without knowing a lot about what's going on in the global
+          environment.
+        </Typography>
       </>
     )
   }
