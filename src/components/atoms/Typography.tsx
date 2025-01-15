@@ -18,7 +18,6 @@ type TypoProps = {
 }
 
 export default function Typography({ mode, children, className }: TypoProps) {
-  console.log('children, mode,ClassName: ', children, mode, className)
   switch (mode) {
     case 'h1':
       return (

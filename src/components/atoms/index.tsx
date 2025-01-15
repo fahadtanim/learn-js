@@ -6,6 +6,8 @@ import withMotionWrapped from './WithMotionWrapped'
 import Links from './Links'
 import Skeleton from './Skeleton'
 import Button from './Button'
+import Pill from './Pill'
+
 export {
   AlertBox,
   CodeSnippet,
@@ -14,5 +16,6 @@ export {
   withMotionWrapped,
   Links,
   Skeleton,
-  Button
+  Button,
+  Pill
 }

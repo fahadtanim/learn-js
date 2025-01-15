@@ -3,7 +3,8 @@ import {
   AlertBox,
   Typography,
   withMotionWrapped,
-  Links
+  Links,
+  Pill
 } from '@/components/atoms'
 import { HR, List, ListItem } from 'flowbite-react'
 import * as motion from 'motion/react-client'
@@ -128,9 +129,7 @@ export const JSCompiler = [
           <ListItem>
             Compiled binaries are platform-specific, meaning a program compiled
             for Windows won’t run on Linux or macOS. A Windows{' '}
-            <span className="h-fit bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-              .exe{' '}
-            </span>
+            <Pill>.exe </Pill>
             file cannot be executed on macOS or Linux. This complicates
             cross-platform development. Developers need to cross-compile or use
             tools like Docker to generate binaries for multiple platforms.
@@ -1196,7 +1195,6 @@ Array.prototype.pMap = function(callback) {
         <Typography mode="h2">
           JavaScript <Typography mode="gradient">Scope</Typography>
         </Typography>
-        <Typography mode="h6">What is Scope?</Typography>
         <Typography>
           Scope is a fundamental concept in programming languages that underpins
           the behavior of variables, functions, and other declarations in any
@@ -1243,8 +1241,17 @@ Array.prototype.pMap = function(callback) {
             </Typography>
           </Typography>
         </AlertBox>
-        <Typography>Let's learn about different types of scope...</Typography>
-        <Typography mode="h6">Global Scope</Typography>
+        <Typography>
+          Now let's learn about{' '}
+          <Typography mode="b-text">global scope</Typography>,{' '}
+          <Typography mode="b-text">local scope</Typography>,{' '}
+          <Typography mode="b-text">function scope</Typography>,{' '}
+          <Typography mode="b-text">block scope</Typography> &{' '}
+          <Typography mode="b-text">Lexical scope</Typography>...
+        </Typography>
+        <Typography mode="h6">
+          <Typography mode="gradient">Global Scope</Typography>
+        </Typography>
         <Typography>
           In JavaScript, global scope is the widest scope available. Variables
           declared in global scope are accessible from anywhere in your code,
@@ -1258,7 +1265,9 @@ Array.prototype.pMap = function(callback) {
           your program can read and modify these global variables.
         </Typography>
 
-        <Typography mode="h6">Local Scope</Typography>
+        <Typography mode="h6">
+          <Typography mode="gradient">Local Scope</Typography>
+        </Typography>
         <Typography>
           Local scope in JavaScript is like a private room within a building –
           it's an enclosed space where variables are only accessible from within
@@ -1267,12 +1276,163 @@ Array.prototype.pMap = function(callback) {
           statement in which it is defined.
         </Typography>
         <Typography>
-          Let's say you've declared variables in a function, now every time the
-          function is called, new instances of these variables are created. This
-          provides some isolation between functions. Each function call acts in
-          its own little world (it's local environement) and can often be
-          understood without knowing a lot about what's going on in the global
-          environment.
+          Let's say you've declared variables in a function or block, now every
+          time the function is called or the block is executed, new instances of
+          these variables are created. This provides some isolation between
+          functions. Each function call acts in its own little world (it's local
+          environement) and can often be understood without knowing a lot about
+          what's going on in the global environment.
+        </Typography>
+        <Typography>
+          Local scope has Two variation. Now Let's have a look at those...
+        </Typography>
+        <Typography mode="h6">
+          <Typography mode="gradient">Function Scope</Typography>
+        </Typography>
+        <Typography>
+          Function scope refers to the visibility and accessibility of
+          variables, functions, and other declarations within a function. It
+          determines how a variable, function, or other entity can be accessed
+          and used within the function's body.
+        </Typography>
+        <Typography>
+          Wait a minute that's a bit of hard word there... So simply, a function
+          scope is a local scope within a function. Variables declared within a
+          function are only accessible within that function, and cannot be
+          accessed from outside the function. The parameters of a function is
+          also included in that functions scope.
+        </Typography>
+        <Typography mode="h6">
+          <Typography mode="gradient">Block Scope</Typography>
+        </Typography>
+        <Typography>
+          Block scope refers to the visibility and accessibility of variables,
+          functions, and other declarations within a block of code, such as a
+          loop or conditional statement. It determines how a variable, function,
+          or other entity can be accessed and used within the block's body.
+        </Typography>
+        <Typography>
+          That means if a variable is declared inside a loop or conditional
+          statement, it is only accessible within that loop or conditional
+          statement.{' '}
+        </Typography>
+        <Typography>Now Let's look at an example...</Typography>
+        <CodeSnippet>
+          {`let result = 0; // Global scope
+
+function incrementBy(delta) { // delta is in Local scope, Specifically Function Scope
+  for (let i = 0; i < 10; i++) { // i is in Block Scope
+    result += delta
+  }
+  console.log("value of i:::",i); // Will throw ReferenceError: i is not defined
+}
+
+console.log("value of delta:::",delta); // Will throw ReferenceError: delta is not defined
+
+incrementBy(10);
+console.log(result);
+`}
+        </CodeSnippet>
+        <AlertBox showIcon={false} className="!text-gray-300">
+          <MotionList className="text-gray-300 mb-4">
+            <ListItem className="text-gray-300">
+              In the above code, the variable <Pill>result</Pill>is declared in
+              global scope. That's why it could be accessed from anywhere and it
+              was accessed inside the <Pill>incrementBy</Pill>function.
+            </ListItem>
+            <ListItem className="text-gray-300">
+              The variable <Pill>delta</Pill>is declared in the{' '}
+              <Pill>incrementBy</Pill>function's local scope. Which is more
+              specifically the function scope. It can only be accessed within
+              the function. That's why if you try to access it like above code
+              in the outside of function, it will throw
+              <Typography mode="b-text" className="!text-red-500">
+                {' '}
+                ReferenceError: delta is not defined.
+              </Typography>
+            </ListItem>
+            <ListItem className="text-gray-300">
+              The variable <Pill>i</Pill>is declared in the{' '}
+              <Pill>incrementBy</Pill>function's <Pill>for</Pill>loop. Which is
+              more specifically the block scope. It can only be accessed within
+              the <Pill>for</Pill>loop code block. That's why if you try to
+              access it like above code in the outside of block, it will throw
+              <Typography mode="b-text" className="!text-red-500">
+                {' '}
+                ReferenceError: i is not defined.
+              </Typography>
+            </ListItem>
+          </MotionList>
+        </AlertBox>
+        <Typography>
+          Now what happens if multiple bindings have the same name? In that
+          case, code can see only the innermost one. Let's have a look at an
+          example...
+        </Typography>
+        <CodeSnippet>{`function halve(n){ return n/2; }
+        let n= 10;
+        console.log(halve(100)); // -> 50
+        console.log(n); // -> 10
+        `}</CodeSnippet>
+        <AlertBox showIcon={false} className="!text-gray-300">
+          <Typography>
+            In the above code, the variable <Pill>n</Pill>is declared in both{' '}
+            <Typography mode="b-text">global</Typography> &{' '}
+            <Typography mode="b-text">function</Typography> scope. So in the
+            first <Pill>console.log()</Pill>where <Pill>halve</Pill>funciton is
+            called, the value of <Pill>n</Pill>will be 100. Because the
+            innermost scope is the function scope that's why the value of{' '}
+            <Pill>n</Pill>that is being used is the function scoped one. But in
+            the second <Pill>console.log()</Pill>, the value of <Pill>n</Pill>
+            will be 10. Because now for it's innermost is the global scoped one.
+          </Typography>
+        </AlertBox>
+        <AlertBox mode="info">
+          So the immediate scope takes priority here.
+        </AlertBox>
+        <Typography mode="h6">
+          <Typography mode="gradient">Lexical Scope</Typography>
+        </Typography>
+        <Typography>
+          JavaScript distinguishes not just the global and local bindings.
+          Blocks and functions can be created inside other blocks and functions,
+          producing multiple degree of locality. Let's have a look at an
+          example...
+        </Typography>
+        <CodeSnippet>
+          {`function outer(x){
+            function inner(y){
+              return x + y;
+            }
+            
+            console.log(inner(2));
+          }`}
+        </CodeSnippet>
+        <Typography>
+          In the above code, the variable <Pill>x</Pill>is declared in the{' '}
+          <Pill>outer</Pill>function's local scope. <Pill>y</Pill>is declared in
+          the <Pill>inner</Pill>function's local scope. But if you look at the{' '}
+          <Pill>inner</Pill> function, this function is using 2 variables{' '}
+          <Pill>x</Pill>& <Pill>y</Pill>. So it will look for these variables
+          inside it's own function scope, and it will not find the{' '}
+          <Pill>x</Pill> inside it's own scope. So it will look into the scope
+          above it which is in the outer function scope. Eventually it will find{' '}
+          <Pill>x</Pill> there. If it doesn't find it even there.. then it will
+          go find it one more step above, which is in this case the global
+          scope. But for <Pill>y</Pill>it will find out in it's own scope.
+        </Typography>
+        <Typography>
+          In short, each local scope can also see all the local scopes that
+          contain it. The set of bindings visible inside a block is determined
+          by the place of that block in the program text. Each local scope can
+          also see all the local scopes that contain it, and all scopes can see
+          the global scopes can see the global scope. This approach to bindings
+          visibility is called{' '}
+          <Typography mode="b-text">Lexical Scoping</Typography>.
+        </Typography>
+        <Typography>
+          Scope is a really important topic. I hope you have learnt a bit from
+          here...
         </Typography>
       </>
     )

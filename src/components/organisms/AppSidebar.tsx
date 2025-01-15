@@ -91,7 +91,6 @@ const SidebarTheme: CustomFlowbiteTheme['sidebar'] = {
 export default function AppSidebar() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
-  console.log('pathname', pathname)
   const menuConfig = pathname.includes('/javascript') ? JsMenu : []
 
   return (

@@ -15,7 +15,6 @@ const CodeSnippet = ({ children }: { children: string }) => {
 
   useEffect(() => {
     ;(async () => {
-      console.log('children', children)
       try {
         const result = await prettier.format(children, {
           parser: 'babel',
