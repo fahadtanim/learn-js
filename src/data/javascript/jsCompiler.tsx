@@ -9,6 +9,7 @@ import {
 import { HR, List, ListItem } from 'flowbite-react'
 import * as motion from 'motion/react-client'
 import { DesignBlock } from '@/components/organisms'
+import { LoadingSkeleton } from '@/components/molecules'
 
 const MotionList = withMotionWrapped(List)
 
@@ -1647,6 +1648,82 @@ console.log(result);
           Scope is a really important topic. I hope you have learnt a bit from
           here...
         </Typography>
+      </>
+    )
+  },
+  {
+    id: 'js-2.10',
+    next: '/javascript/js-2.11',
+    prev: '/javascript/js-2.9',
+    title: 'Closure',
+    content: (
+      <>
+        <Typography mode="h2">
+          <Typography mode="gradient">Closure</Typography>
+        </Typography>
+        <Typography>Still Writing In Progress...</Typography>
+        <LoadingSkeleton></LoadingSkeleton>
+      </>
+    )
+  },
+  {
+    id: 'js-2.11',
+    next: '/javascript/js-2.12',
+    prev: '/javascript/js-2.10',
+    title: 'IIFE',
+    content: (
+      <>
+        <Typography mode="h2">
+          Immediately Invoked
+          <Typography mode="gradient"> Function Expression</Typography>
+        </Typography>
+        <Typography>Still Writing In Progress...</Typography>
+        <LoadingSkeleton></LoadingSkeleton>
+      </>
+    )
+  },
+  {
+    id: 'js-2.12',
+    next: '/javascript/js-2.13',
+    prev: '/javascript/js-2.11',
+    title: 'Higher Order Function',
+    content: (
+      <>
+        <Typography mode="h2">
+          Higher Order<Typography mode="gradient"> Function</Typography>
+        </Typography>
+        <Typography>Still Writing In Progress...</Typography>
+        <LoadingSkeleton></LoadingSkeleton>
+      </>
+    )
+  },
+  {
+    id: 'js-2.13',
+    next: '/javascript/js-2.14',
+    prev: '/javascript/js-2.12',
+    title: 'Currying',
+    content: (
+      <>
+        <Typography mode="h2">
+          <Typography mode="gradient">Currying</Typography>
+        </Typography>
+        <Typography>Still Writing In Progress...</Typography>
+        <LoadingSkeleton></LoadingSkeleton>
+      </>
+    )
+  },
+  {
+    id: 'js-2.14',
+    // next: '/javascript/js-2.15',
+    prev: '/javascript/js-2.13',
+    title: 'Currying',
+    content: (
+      <>
+        <Typography mode="h2">
+          Events in <Typography mode="gradient">Javascript</Typography>
+        </Typography>
+        <Typography>Still Writing In Progress...</Typography>
+        <LoadingSkeleton></LoadingSkeleton>
       </>
     )
   }

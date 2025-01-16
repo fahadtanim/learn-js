@@ -60,7 +60,37 @@ export const JsMenu = [
         id: 'js-2.9',
         label: 'JavaScript Scope',
         link: '/javascript/js-2.9'
+      },
+      {
+        id: 'js-2.10',
+        label: 'Closure',
+        link: '/javascript/js-2.10'
+      },
+      {
+        id: 'js-2.11',
+        label: 'IIFE',
+        link: '/javascript/js-2.11'
+      },
+      {
+        id: 'js-2.12',
+        label: 'Higher Order Function',
+        link: '/javascript/js-2.12'
+      },
+      {
+        id: 'js-2.13',
+        label: 'Currying',
+        link: '/javascript/js-2.13'
+      },
+      {
+        id: 'js-2.14',
+        label: 'Events in Javascript',
+        link: '/javascript/js-2.14'
       }
+      // {
+      //   id: 'js-2.15',
+      //   label: 'IIFE',
+      //   link: '/javascript/js-2.15'
+      // }
     ]
   }
 ]
