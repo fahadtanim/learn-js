@@ -9,7 +9,6 @@ import {
 import { HR, List, ListItem } from 'flowbite-react'
 import * as motion from 'motion/react-client'
 import { DesignBlock } from '@/components/organisms'
-import { LoadingSkeleton } from '@/components/molecules'
 
 const MotionList = withMotionWrapped(List)
 
@@ -81,7 +80,7 @@ export const JSCompiler = [
           <Typography mode="b-text"> disadvantages</Typography>...
         </Typography>
         <Typography mode="h6">Advantages:</Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             Compiler runs only once. That means it only needs to be compiled
             once. Compiled output can be run directly. This results in faster
@@ -118,7 +117,7 @@ export const JSCompiler = [
           </ListItem>
         </MotionList>
         <Typography mode="h6">Disadvantages:</Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             Large codebases with thousands of files take a long time to compile,
             especially with optimization flags enabled. Projects like Linux
@@ -198,7 +197,7 @@ export const JSCompiler = [
           <Typography mode="b-text"> disadvantages</Typography>...
         </Typography>
         <Typography mode="h6">Advantages:</Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             Since there's no need to compile the code, you can run it
             immediately after making changes. It enables faster prototyping,
@@ -216,7 +215,7 @@ export const JSCompiler = [
           </ListItem>
         </MotionList>
         <Typography mode="h6">Disadvantages:</Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             Since code is executed line-by-line, it's slower than a compiled
             program that runs in machine code. Performance-critical applications
@@ -300,7 +299,7 @@ export const JSCompiler = [
           In JavaScript, the Just-In-Time (JIT) compilation process consists of
           three core components:
         </Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>Monitor/Profiler</ListItem>
           <ListItem>Baseline Compiler</ListItem>
           <ListItem>Optimization Compiler</ListItem>
@@ -423,10 +422,10 @@ export const JSCompiler = [
             </Typography>
           </Typography>
         </AlertBox>
-        <AlertBox showIcon={false} className="!text-gray-300">
+        <AlertBox showIcon={false} className="!text-gray-300 text-justify">
           Here's a short description of what is inlining, loop unrolling,
           constant folding & dead code elimination.
-          <MotionList className=" text-gray-300 mb-4">
+          <MotionList className=" text-gray-300 mb-4 !text-justify">
             <ListItem className="text-gray-300">
               <Typography mode="b-text">Inlining: </Typography>Inlining replaces
               a function call with the actual body of the function to avoid the
@@ -478,13 +477,9 @@ export const JSCompiler = [
           browser or environments use Different JS Engines. The most popular
           ones are:
         </Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">Google Chrome:</Typography> V8 Engine
-          </ListItem>
-          <ListItem>
-            <Typography mode="b-text">Mozilla Firefox:</Typography> Spider
-            Monkey
           </ListItem>
           <ListItem>
             <Typography mode="b-text">Mozilla Firefox:</Typography> Spider
@@ -521,7 +516,7 @@ export const JSCompiler = [
         </Typography>
         <Typography>Let's see how the V8 Engine works...</Typography>
 
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">Parsing and Tokenization:</Typography> The
             process begins with the source JavaScript code being fed into a
@@ -632,7 +627,7 @@ export const JSCompiler = [
           This creates a challenge: developers are faced with a choice. They can
           either:
         </Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">
               Ignore the benefits of using the latest JavaScript features
@@ -672,7 +667,7 @@ export const JSCompiler = [
           different browsers.
         </Typography>
         <Typography mode="h6">Benefits of Polyfilling:</Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">Cross-browser Compatibility:</Typography>{' '}
             Makes modern features work on older browsers.
@@ -688,7 +683,7 @@ export const JSCompiler = [
           </ListItem>
         </MotionList>
         <Typography mode="h6">Drawbacks of Polyfilling:</Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">Increased Bundle Size: </Typography>{' '}
             Adding polyfills increases the size of the JavaScript file.
@@ -798,7 +793,7 @@ Array.prototype.pMap = function(callback) {
           <Typography mode="b-text">JavaScript Ecosystem. </Typography>
           Let's see some of the examples below...
         </Typography>
-        <MotionList className="text-gray-300 mb-4">
+        <MotionList className="text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">TypeScript to JavaScript: </Typography>
             TypeScript, a superset of JavaScript, is transpiled to plain
@@ -844,7 +839,7 @@ Array.prototype.pMap = function(callback) {
         />
 
         <Typography mode="h6">So, Why Transpile?</Typography>
-        <MotionList className="text-gray-300 mb-4">
+        <MotionList className="text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">
               Cross-Browser/Environment Compatibility:
@@ -923,7 +918,7 @@ Array.prototype.pMap = function(callback) {
           </Typography>{' '}
           in JavaScript:
         </Typography>
-        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4">
+        <MotionList className="space-y-1 list-disc list-inside text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">
               Global Execution Context (GEC):
@@ -949,7 +944,7 @@ Array.prototype.pMap = function(callback) {
           <Typography mode="b-text">Global Execution Context (GEC) </Typography>{' '}
           first.
         </Typography>
-        <MotionList className="text-gray-300 mb-4">
+        <MotionList className="text-gray-300 mb-4 text-justify">
           <ListItem>
             Created{' '}
             <Typography mode="b-text">
@@ -963,7 +958,7 @@ Array.prototype.pMap = function(callback) {
           </ListItem>
           <ListItem>
             It creates <Typography mode="b-text">two</Typography> things:
-            <MotionList className="ml-5 mt-2 list-disc list-inside text-gray-300 mb-4">
+            <MotionList className="ml-5 mt-2 list-disc list-inside text-gray-300 mb-4 text-justify">
               <ListItem>
                 <Typography mode="b-text">The global object</Typography> (like
                 <Typography mode="b-text"> window</Typography> in browsers or{' '}
@@ -990,7 +985,7 @@ Array.prototype.pMap = function(callback) {
           <Typography mode="b-text">Global Exectution Context (GEC)</Typography>
           .
         </Typography>
-        <MotionList className="text-gray-300 mb-4">
+        <MotionList className="text-gray-300 mb-4 text-justify">
           <ListItem>
             Created{' '}
             <Typography mode="b-text">when a function is invoked</Typography>.
@@ -1022,7 +1017,7 @@ Array.prototype.pMap = function(callback) {
           </ListItem>
         </MotionList>
         <Typography mode="h6">Eval Execution Context (Rarely Used):</Typography>
-        <MotionList className="text-gray-300 mb-4">
+        <MotionList className="text-gray-300 mb-4 text-justify">
           <ListItem>
             Created when <Typography mode="b-text">eval()</Typography> function
             is executed (not recommended to use).
@@ -1087,6 +1082,224 @@ Array.prototype.pMap = function(callback) {
     id: 'js-2.7',
     next: '/javascript/js-2.8',
     prev: '/javascript/js-2.6',
+    title: 'Hoisting',
+    content: (
+      <>
+        <Typography mode="h2">
+          <Typography mode="gradient">Hoisting</Typography>
+        </Typography>
+        <Typography>
+          Hoisting is a JavaScript mechanism where variable and function
+          declarations are{' '}
+          <Typography mode="b-text">moved (or "hoisted")</Typography> to the top
+          of their{' '}
+          <Typography mode="b-text">
+            containing scope (global or function scope)
+          </Typography>{' '}
+          during the compilation phase. This means you can use variables and
+          functions
+          <Typography mode="b-text"> before they are declared</Typography> in
+          the code, though the behavior depends on the type of declaration (var,
+          let, const) or whether it's a function.
+        </Typography>
+        <Typography>
+          Now Let's have a look at some examples to understand it better. And At
+          first let's have a look at variable declarations...
+        </Typography>
+        <CodeSnippet>
+          {`
+// var
+
+console.log(varX); // undefined (declaration is hoisted, but not the value)
+var varX = 5;
+console.log("varX: ", varX); // 5
+
+`}
+        </CodeSnippet>
+        <AlertBox showIcon={false} className="!text-gray-300">
+          <Typography>
+            In the first example, <Pill>varX</Pill> is used in a{' '}
+            <Pill>console.log()</Pill>even before the declaration. But if you
+            look at the output, you'll see <Pill>undefined</Pill>, Wait what?
+            it's definitely not declared yet, right? But it's not throwing
+            undeclared error.{' '}
+            <Typography mode="b-text">That's because of hoisting</Typography>.
+            Variable declaration moved up while compilation. So when this line
+            was getting executed, the declaration is already done.{' '}
+          </Typography>
+          <div>
+            <AlertBox
+              mode="info"
+              className="!mt-4 border !border-gray-600 !mb-0"
+            >
+              <Typography className="!mb-0">
+                <Typography mode="b-text" className="!text-blue-500">
+                  NOTE: for variable declartion using <Pill>var</Pill>, both the
+                  variable declaration and initialization is done. The value
+                  that get initialized is <Pill>undefined</Pill>. That's why we
+                  found <Pill>undefined</Pill>in the output.
+                </Typography>
+              </Typography>
+            </AlertBox>
+          </div>
+        </AlertBox>
+
+        <CodeSnippet>
+          {`
+
+// let
+
+console.log(letX); // ReferenceError: letX is not defined (declaration is hoisted, but not the value)
+let letX = 5;
+console.log("letX: ", letX); // 5
+`}
+        </CodeSnippet>
+        <AlertBox showIcon={false} className="!text-gray-300">
+          <Typography>
+            In the second example, <Pill>letX</Pill> is used in a{' '}
+            <Pill>console.log()</Pill>even before the declaration. Now It will
+            throw an error saying,{' '}
+            <Typography mode="b-text" className="!text-red-500">
+              ReferenceError: letX is not defined
+            </Typography>
+            , Wait what? it's definitely not declared yet, right? But it's not
+            throwing undeclared error. That's because of hoisting. variable
+            declaration moved up while compilation. So when this line was
+            getting executed, the declaration is already done.
+          </Typography>
+          <div>
+            <AlertBox
+              mode="info"
+              className="!mt-4 !mb-0 border !border-gray-600"
+            >
+              <Typography className="!mb-0">
+                <Typography mode="b-text" className="!text-blue-500">
+                  NOTE: for variable declartion using <Pill>let</Pill>, only the
+                  variable declaration is done. The value is not initialized.
+                  That's why we are seeing{' '}
+                  <Typography mode="b-text" className="!text-red-500">
+                    ReferenceError: letX is not defined
+                  </Typography>{' '}
+                  error instead of{' '}
+                  <Typography mode="b-text" className="!text-red-500">
+                    undeclared
+                  </Typography>
+                  .
+                </Typography>
+              </Typography>
+            </AlertBox>
+          </div>
+        </AlertBox>
+        <CodeSnippet>
+          {`
+
+// const
+
+console.log(constX); // ReferenceError: constX is not defined (declaration is hoisted, but not the value)
+const constX = 5;
+console.log("constX: ", constX); // 5
+`}
+        </CodeSnippet>
+        <AlertBox showIcon={false} className="!text-gray-300">
+          <Typography>
+            In the third example, <Pill>constX</Pill> is used in a{' '}
+            <Pill>console.log()</Pill>even before the declaration. Now It will
+            throw an error saying,{' '}
+            <Typography mode="b-text" className="!text-red-500">
+              ReferenceError: constX is not defined
+            </Typography>
+            , Wait what? it's definitely not declared yet, right? But it's not
+            throwing undeclared error. That's because of hoisting. variable
+            declaration moved up while compilation. So when this line was
+            getting executed, the declaration is already done.
+          </Typography>
+          <div>
+            <AlertBox
+              mode="info"
+              className="!mt-4 !mb-0 border !border-gray-600"
+            >
+              <Typography className="!mb-0">
+                <Typography mode="b-text" className="!text-blue-500">
+                  NOTE: for variable declartion using <Pill>const</Pill>, only
+                  the variable declaration is done. The value is not
+                  initialized. That's why we are seeing{' '}
+                  <Typography mode="b-text" className="!text-red-500">
+                    ReferenceError: constX is not defined
+                  </Typography>{' '}
+                  error instead of{' '}
+                  <Typography mode="b-text" className="!text-red-500">
+                    undeclared
+                  </Typography>
+                  .
+                </Typography>
+              </Typography>
+            </AlertBox>
+          </div>
+        </AlertBox>
+        <Typography>
+          Now that we've seen what happens in variables due to hoisting, let's
+          have a look at what happens to functions due to hoisting with some
+          example...
+        </Typography>
+        <CodeSnippet>
+          {`// For functions declaration
+
+sayHi(); // "Hi!"
+function sayHi() {
+    console.log("Hi!");
+}`}
+        </CodeSnippet>
+        <AlertBox showIcon={false} className="!text-gray-300">
+          <Typography className="!mb-0">
+            In the above example, we are using function declaration. In
+            JavaScript the function is also hoisted. That means function
+            declaration is moved up. That's why even when we try to execute the
+            function <Pill>sayHi()</Pill>even before the declaration we get the
+            perfect output as we want from the function.
+          </Typography>
+        </AlertBox>
+        <CodeSnippet>
+          {`// For functions expression
+
+funcX(); // ReferenceError: funcX is not defined (declaration is hoisted, but not the value)
+const funcX = function () {
+    console.log("Function expression");
+}
+
+
+add(); //TypeError: add is not a function
+var add = function (a, b) {
+    return a + b;
+};
+
+
+`}
+        </CodeSnippet>
+        <AlertBox showIcon={false} className="!text-gray-300">
+          <Typography className="!mb-0">
+            In the above example, we are using function expression. It acts
+            exactly like the variable hoisting do. If we use <Pill>let</Pill>or{' '}
+            <Pill>const</Pill>to declare the variable of function expression,
+            then it will throw{' '}
+            <Typography mode="b-text" className="!text-red-500">
+              ReferenceError: funcX is not defined{' '}
+            </Typography>
+            . but if we use <Pill>var</Pill> to declare the variable of function
+            just like the <Pill>add()</Pill>function in the example, then it
+            will throw{' '}
+            <Typography mode="b-text" className="!text-red-500">
+              ReferenceError: funcX is not defined
+            </Typography>
+            .
+          </Typography>
+        </AlertBox>
+      </>
+    )
+  },
+  {
+    id: 'js-2.8',
+    next: '/javascript/js-2.9',
+    prev: '/javascript/js-2.7',
     title: 'Event Loop',
     content: (
       <>
@@ -1126,7 +1339,7 @@ Array.prototype.pMap = function(callback) {
         <Typography mode="h6">
           Let's learn the main components of the event loop...
         </Typography>
-        <MotionList className="text-gray-300 mb-4">
+        <MotionList className="text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">Call Stack:</Typography> A stack data
             structure that keeps track of function calls. Functions are pushed
@@ -1157,7 +1370,7 @@ Array.prototype.pMap = function(callback) {
           <Typography mode="b-text">macrotasks</Typography> (tasks in the
           callback queue):
         </Typography>
-        <MotionList className="text-gray-300 mb-4">
+        <MotionList className="text-gray-300 mb-4 text-justify">
           <ListItem>
             <Typography mode="b-text">Microtasks: </Typography> Include Promise
             .then() handlers, queueMicrotask, and MutationObserver callbacks.
@@ -1186,9 +1399,9 @@ Array.prototype.pMap = function(callback) {
     )
   },
   {
-    id: 'js-2.8',
-    next: '/javascript/js-2.9',
-    prev: '/javascript/js-2.7',
+    id: 'js-2.9',
+    next: '/javascript/js-2.10',
+    prev: '/javascript/js-2.8',
     title: 'Scope',
     content: (
       <>
@@ -1334,7 +1547,7 @@ console.log(result);
 `}
         </CodeSnippet>
         <AlertBox showIcon={false} className="!text-gray-300">
-          <MotionList className="text-gray-300 mb-4">
+          <MotionList className="text-gray-300 mb-4 text-justify">
             <ListItem className="text-gray-300">
               In the above code, the variable <Pill>result</Pill>is declared in
               global scope. That's why it could be accessed from anywhere and it

@@ -27,16 +27,18 @@ export default function AlertBox({
       break
   }
 
+  className = `${baseClassName} ${className}`
+
   const WrappedAlert = withMotionWrapped(Alert)
   return (
     <WrappedAlert
       color={mode}
       icon={showIcon ? HiInformationCircle : undefined}
-      className={`${baseClassName} ${className}`}
+      className={className}
     >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
-          return React.cloneElement(child, { className: '!mb-0' } as any)
+          return React.cloneElement(child)
         }
         return child
       })}

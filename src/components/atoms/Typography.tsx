@@ -17,12 +17,16 @@ type TypoProps = {
   className?: string
 }
 
-export default function Typography({ mode, children, className }: TypoProps) {
+export default function Typography({
+  mode = 'normal',
+  children,
+  className = ''
+}: TypoProps) {
   switch (mode) {
     case 'h1':
       return (
         <motion.h1
-          className={`text-5xl font-extrabold text-white mb-4 ${className}`}
+          className={`text-5xl font-extrabold text-white mb-4 text-justify ${className}`}
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75 }}
@@ -33,7 +37,7 @@ export default function Typography({ mode, children, className }: TypoProps) {
     case 'h2':
       return (
         <motion.h2
-          className={`text-4xl font-extrabold text-white mb-4 ${className}`}
+          className={`text-4xl font-extrabold text-white text-justify mb-4 ${className}`}
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75 }}
@@ -44,7 +48,7 @@ export default function Typography({ mode, children, className }: TypoProps) {
     case 'h3':
       return (
         <motion.h3
-          className={`text-3xl font-extrabold text-white mb-4 ${className}`}
+          className={`text-3xl font-extrabold text-justify text-white mb-4 ${className}`}
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75 }}
@@ -56,7 +60,7 @@ export default function Typography({ mode, children, className }: TypoProps) {
     case 'h4':
       return (
         <motion.h4
-          className={`text-2xl font-extrabold text-white mb-4 ${className}`}
+          className={`text-2xl font-extrabold text-justify text-white mb-4 ${className}`}
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75 }}
@@ -68,7 +72,7 @@ export default function Typography({ mode, children, className }: TypoProps) {
     case 'h5':
       return (
         <motion.h5
-          className="text-xl font-bold text-white mb-3"
+          className="text-xl font-bold text-justify text-white mb-3"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75 }}
@@ -80,7 +84,7 @@ export default function Typography({ mode, children, className }: TypoProps) {
     case 'h6':
       return (
         <motion.h6
-          className={`text-lg font-extrabold text-white mb-4 ${className}`}
+          className={`text-lg font-extrabold text-justify text-white mb-4 ${className}`}
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75 }}
@@ -91,7 +95,7 @@ export default function Typography({ mode, children, className }: TypoProps) {
     case 'b-text':
       return (
         <motion.span
-          className={`font-semibold text-white ${className}`}
+          className={`font-semibold text-white text-justify ${className}`}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.75 }}
@@ -114,7 +118,7 @@ export default function Typography({ mode, children, className }: TypoProps) {
     default:
       return (
         <motion.p
-          className={`mb-4 text-lg font-normal text-gray-300 ${className}`}
+          className={`mb-4 text-lg font-normal text-gray-300 text-justify ${className}`}
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{

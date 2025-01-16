@@ -48,13 +48,18 @@ export const JsMenu = [
       },
       {
         id: 'js-2.7',
-        label: 'Event Loop',
+        label: 'Hoisting',
         link: '/javascript/js-2.7'
       },
       {
         id: 'js-2.8',
-        label: 'JavaScript Scope',
+        label: 'Event Loop',
         link: '/javascript/js-2.8'
+      },
+      {
+        id: 'js-2.9',
+        label: 'JavaScript Scope',
+        link: '/javascript/js-2.9'
       }
     ]
   }
