@@ -354,7 +354,7 @@ export const JSCompiler = [
           used values and stores this information to improve performance.
         </Typography>
         <AlertBox mode="info">
-          <Typography className="!text-blue-300 mb-0">
+          <Typography className="!text-blue-300 !mb-0">
             <Typography mode="b-text" className="!text-blue-400">
               Purpose: To provide a quick and simple compilation of code for
               faster execution without extensive optimizations.
@@ -377,7 +377,7 @@ export const JSCompiler = [
           description is given below.
         </Typography>
         <AlertBox mode="info">
-          <Typography className="!text-blue-300 mb-0">
+          <Typography className="!text-blue-300 !mb-0">
             <Typography mode="b-text" className="!text-blue-400">
               Purpose: To provide highly optimized machine code for hot parts of
               the code, significantly boosting performance.
@@ -415,7 +415,7 @@ export const JSCompiler = [
           It's a hybrid program.
         </Typography>
         <AlertBox mode="failure">
-          <Typography className="!text-red-300 mb-0">
+          <Typography className="!text-red-300 !mb-0">
             <Typography mode="b-text" className="!text-red-400">
               Note: Different browsers may have different implementaions of JIT
               compilers. The above mentioned process is a generalized process.
@@ -425,7 +425,7 @@ export const JSCompiler = [
         <AlertBox showIcon={false} className="!text-gray-300 text-justify">
           Here's a short description of what is inlining, loop unrolling,
           constant folding & dead code elimination.
-          <MotionList className=" text-gray-300 mb-4 !text-justify">
+          <MotionList className=" text-gray-300 !mb-0 !text-justify">
             <ListItem className="text-gray-300">
               <Typography mode="b-text">Inlining: </Typography>Inlining replaces
               a function call with the actual body of the function to avoid the
@@ -1547,7 +1547,7 @@ console.log(result);
 `}
         </CodeSnippet>
         <AlertBox showIcon={false} className="!text-gray-300">
-          <MotionList className="text-gray-300 mb-4 text-justify">
+          <MotionList className="text-gray-300 !mb-0 text-justify">
             <ListItem className="text-gray-300">
               In the above code, the variable <Pill>result</Pill>is declared in
               global scope. That's why it could be accessed from anywhere and it
@@ -1588,7 +1588,7 @@ console.log(result);
         console.log(n); // -> 10
         `}</CodeSnippet>
         <AlertBox showIcon={false} className="!text-gray-300">
-          <Typography>
+          <Typography className="!mb-0">
             In the above code, the variable <Pill>n</Pill>is declared in both{' '}
             <Typography mode="b-text">global</Typography> &{' '}
             <Typography mode="b-text">function</Typography> scope. So in the
