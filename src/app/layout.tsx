@@ -6,7 +6,7 @@ import '@/css/global.css'
 import { AppNavbar, AppSidebar } from '@/components/organisms'
 import { Suspense } from 'react'
 import { LoadingSkeleton } from '@/components/molecules'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from 'nextjs-google-analytics'
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin']
@@ -44,7 +44,7 @@ export default function RootLayout({
             </Suspense>
           </div>
         </div>
-        <GoogleAnalytics gaId="G-Q07NRZ7XQC" />
+        <GoogleAnalytics trackPageViews strategy="lazyOnload" />
       </body>
     </html>
   )
