@@ -1,7 +1,7 @@
 import { Button } from '@/components/atoms'
 import PageContent from '@/components/molecules/PageContent'
 import { JSBlog } from '@/data/javascript/javascript'
-import Link from 'next/link'
+
 import { HiOutlineArrowRight, HiOutlineArrowLeft } from 'react-icons/hi'
 
 export async function generateStaticParams() {

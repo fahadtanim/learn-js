@@ -7,6 +7,8 @@ import { AppNavbar, AppSidebar } from '@/components/organisms'
 import { Suspense } from 'react'
 import { LoadingSkeleton } from '@/components/molecules'
 import { GoogleAnalytics } from '@next/third-parties/google'
+// Import the functions you need from the SDKs you need
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin']
@@ -49,3 +51,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+//GTM-MVVQRM86

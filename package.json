@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebase/firestore": "^4.7.6",
     "@next/third-parties": "^15.1.4",
     "@types/highlightjs": "^9.12.6",
+    "firebase": "^11.1.0",
     "flowbite-react": "^0.10.2",
     "highlight.js": "^11.11.0",
     "motion": "^11.15.0",
