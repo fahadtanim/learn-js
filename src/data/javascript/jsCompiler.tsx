@@ -1758,6 +1758,50 @@ console.log(result);
           Variables declared in the outer function are preserved and not garbage
           collected if they are being referenced by the inner function.
         </AlertBox>
+        <Typography>
+          Now Let's have a look at some of the use cases of closures using
+          examples...
+        </Typography>
+        <CodeSnippet>
+          {`function createCounter() {
+  let count = 0;
+  return {
+    increment: () => ++count,
+    decrement: () => --count,
+    getCount: () => count,
+  };
+}
+
+const counter = createCounter();
+console.log(counter.increment()); // -> 1
+console.log(counter.increment()); // -> 2
+console.log(counter.getCount());  // -> 2
+console.log(counter.decrement()); // -> 1`}
+        </CodeSnippet>
+
+        <AlertBox showIcon={false}>
+          In the above code, what we achieved using closures is{' '}
+          <Typography mode="b-text">Data Privacy</Typography>. The variable{' '}
+          <Pill>count</Pill>is private and can only be accessed or modified
+          using the methods provided by the closure.
+        </AlertBox>
+        <CodeSnippet>
+          {`function multiply(a) {
+  return function (b) {
+    return a * b;
+  };
+}
+
+const double = multiply(2);
+console.log(double(5)); // 10
+`}
+        </CodeSnippet>
+        <AlertBox showIcon={false}>
+          Closures can be used to create partially applied functions. That means
+          we can create factory function. For example, we can create a another
+          function using the above <Pill>multiply()</Pill> to generate the
+          factor of 5 or 10 or any other.
+        </AlertBox>
       </>
     )
   },
