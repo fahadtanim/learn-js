@@ -1661,8 +1661,103 @@ console.log(result);
         <PostTitle>
           <Typography mode="gradient">Closure</Typography>
         </PostTitle>
-        <Typography>Still Writing In Progress...</Typography>
-        <LoadingSkeleton></LoadingSkeleton>
+        <Typography>
+          In JavaScript, functions are first-class citizens. This means that
+          functions can be assigned to variables, passed as arguments to other
+          functions, and returned from other functions. Functions can also be
+          nested, which means that one function can contain another function.{' '}
+          <Typography mode="b-text">
+            So, In short, they can be treated as values
+          </Typography>
+          .
+        </Typography>
+        <Typography>
+          The ability to treate functions as values, combined with the fact
+          local bindings are re-created every time a function is called, brings
+          up an interesting question.{' '}
+          <Typography mode="b-text">
+            What happens to local bindings when the function call that created
+            them is no longer active?
+          </Typography>
+        </Typography>
+        <Typography>let's have a look at the example below...</Typography>
+        <CodeSnippet>
+          {`function wrapValue(n){
+          let local = n;
+          return function(){
+            return local;
+          }
+          }
+          
+          let wrap1 = wrapValue(10);
+          let wrap2 = wrapValue(20);
+          console.log(wrap1()); // -> 10
+          console.log(wrap2()); // -> 20
+          `}
+        </CodeSnippet>
+        <Typography>
+          So, what is happening at the above code? Let's go through it step by
+          step... First, There is a function declared named{' '}
+          <Pill>wrapValue(n)</Pill>. Which takes a parameter <Pill>n</Pill>. it
+          set's the value of <Pill>n</Pill>in it's local variable{' '}
+          <Pill>local</Pill>and then returns a function. Now if we take a look
+          at the function that is getting returned, we can see that it is
+          returning the value of <Pill>local</Pill>. But there is no variable in
+          it's Local scope called <Pill>local</Pill>. So it will take a look at
+          the scope above and will find <Pill>local</Pill>in the{' '}
+          <Pill>WrapValue()</Pill> funciton scope.
+        </Typography>
+        <Typography>
+          In the next two following line, the <Pill>wrapValue(n)</Pill>function
+          is called using <Pill>10</Pill> & <Pill>20</Pill>and the returned
+          value is set in the <Pill>wrap1</Pill>and <Pill>wrap2</Pill>
+          variable. Now what was the value that got returned from the function{' '}
+          <Pill>wrapValue(n)</Pill>? It was a function, right? So{' '}
+          <Pill>wrap1</Pill>and <Pill>wrap2</Pill>is basically function with the
+          body that is returned from executed function <Pill>wrapValue(n)</Pill>
+          .
+        </Typography>
+
+        <Typography>
+          Now in the next two line, we are showing the output of{' '}
+          <Pill>wrap1()</Pill>and <Pill>wrap2()</Pill>in console. If you check
+          the output it will print out <Pill>10</Pill>& <Pill>20</Pill>.
+        </Typography>
+        <Typography>
+          Wait a minute, but those values are from <Pill>wrapValue(n)</Pill>{' '}
+          function which has already been executed. But the returned function
+          still has access to it?{' '}
+          <Typography mode="b-text">Yes, this is allowed and works</Typography>.
+          Both instances of the bindings can still be accessed. This situation
+          is a good demonstration of the fact that the bindings are created a
+          new for every call, and different calls can't trample on one another's
+          local bindings.
+        </Typography>
+        <Typography>
+          This feature,{' '}
+          <Typography mode="b-text">
+            being able to access the outer function scope variable, even after
+            the complete exectution of it's outer function, is called closure
+          </Typography>
+          . Another way to put it is, a{' '}
+          <Typography mode="b-text">closure</Typography> is a function that "
+          <Typography mode="b-text">remembers</Typography>" the variables from
+          its lexical scope even after the outer function has finished
+          executing. This powerful feature allows inner functions to access and
+          manipulate variables defined in their outer function, even when the
+          outer function is no longer active.
+        </Typography>
+        <Typography>
+          There's 2 key points to be remembered about closure...
+        </Typography>
+        <AlertBox mode="info">
+          The inner function retains access to the scope in which it was
+          created.
+        </AlertBox>
+        <AlertBox mode="info">
+          Variables declared in the outer function are preserved and not garbage
+          collected if they are being referenced by the inner function.
+        </AlertBox>
       </>
     )
   },
