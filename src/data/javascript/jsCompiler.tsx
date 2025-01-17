@@ -8,7 +8,7 @@ import {
 } from '@/components/atoms'
 import { HR, List, ListItem } from 'flowbite-react'
 import * as motion from 'motion/react-client'
-import { DesignBlock } from '@/components/organisms'
+import { DesignBlock, PostTitle } from '@/components/organisms'
 import { LoadingSkeleton } from '@/components/molecules'
 
 const MotionList = withMotionWrapped(List)
@@ -21,9 +21,9 @@ export const JSCompiler = [
     title: 'Compiler vs Interpreter',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           Compiler vs <Typography mode="gradient">Interpreter</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>
           Programming languages that we use day by day, they are understandable
           by us. But they are not understandable by the computer. That means
@@ -262,9 +262,9 @@ export const JSCompiler = [
     title: 'Just In Time',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           Just In <Typography mode="gradient">Time</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>
           In the previous section, We have seen the advantages and disadvantages
           of compiler and interpreter. And at last we got a question what if we
@@ -468,9 +468,9 @@ export const JSCompiler = [
     title: 'JS Engine',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           JS <Typography mode="gradient">Engine</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>
           We already know by far that JS doesn't run on it's own in computer. JS
           runs in a program that we call{' '}
@@ -612,9 +612,9 @@ export const JSCompiler = [
     title: 'Polyfilling',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           <Typography mode="gradient">Polyfilling</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>
           JavaScript is a constantly evolving language, with new features and
           tools being introduced regularly. This is beneficial for developers as
@@ -728,9 +728,9 @@ Array.prototype.pMap = function(callback) {
     title: 'Transpiling',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           <Typography mode="gradient">Transpiling</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>
           <Typography mode="b-text">
             Transpiling (short for "source-to-source compiling") is the process
@@ -903,9 +903,9 @@ Array.prototype.pMap = function(callback) {
     title: 'Execution Context',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           Execution <Typography mode="gradient">Context</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>
           An Execution Context in JavaScript is an{' '}
           <Typography mode="b-text">abstract environment </Typography>where the
@@ -1086,9 +1086,9 @@ Array.prototype.pMap = function(callback) {
     title: 'Hoisting',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           <Typography mode="gradient">Hoisting</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>
           Hoisting is a JavaScript mechanism where variable and function
           declarations are{' '}
@@ -1304,9 +1304,9 @@ var add = function (a, b) {
     title: 'Event Loop',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           Event <Typography mode="gradient">Loop</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>
           Event loop is the Javascript's magic mechanism that allows the
           Javascript to act like a multi-threaded languange, even though{' '}
@@ -1406,9 +1406,9 @@ var add = function (a, b) {
     title: 'Scope',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           JavaScript <Typography mode="gradient">Scope</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>
           Scope is a fundamental concept in programming languages that underpins
           the behavior of variables, functions, and other declarations in any
@@ -1658,9 +1658,9 @@ console.log(result);
     title: 'Closure',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           <Typography mode="gradient">Closure</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>Still Writing In Progress...</Typography>
         <LoadingSkeleton></LoadingSkeleton>
       </>
@@ -1673,10 +1673,10 @@ console.log(result);
     title: 'IIFE',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           Immediately Invoked
           <Typography mode="gradient"> Function Expression</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>Still Writing In Progress...</Typography>
         <LoadingSkeleton></LoadingSkeleton>
       </>
@@ -1689,9 +1689,9 @@ console.log(result);
     title: 'Higher Order Function',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           Higher Order<Typography mode="gradient"> Function</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>Still Writing In Progress...</Typography>
         <LoadingSkeleton></LoadingSkeleton>
       </>
@@ -1704,9 +1704,9 @@ console.log(result);
     title: 'Currying',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           <Typography mode="gradient">Currying</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>Still Writing In Progress...</Typography>
         <LoadingSkeleton></LoadingSkeleton>
       </>
@@ -1719,9 +1719,9 @@ console.log(result);
     title: 'Currying',
     content: (
       <>
-        <Typography mode="h2">
+        <PostTitle>
           Events in <Typography mode="gradient">Javascript</Typography>
-        </Typography>
+        </PostTitle>
         <Typography>Still Writing In Progress...</Typography>
         <LoadingSkeleton></LoadingSkeleton>
       </>
