@@ -1799,8 +1799,40 @@ console.log(double(5)); // 10
         <AlertBox showIcon={false}>
           Closures can be used to create partially applied functions. That means
           we can create factory function. For example, we can create a another
-          function using the above <Pill>multiply()</Pill> to generate the
-          factor of 5 or 10 or any other.
+          function using the above <Pill>multiply()</Pill>to create another
+          function like to get the multiple of 3 for a number{' '}
+          <Pill>tripple()</Pill>or multiple of 4 for a number{' '}
+          <Pill>quadruple()</Pill>etc.
+        </AlertBox>
+        <CodeSnippet>
+          {`function createLogger(name) {
+  return function (message) {` +
+            'console.log(`[${name}] ${message}`);' +
+            `};
+}
+
+const appLogger = createLogger("Stupid App");
+appLogger("Starting up..."); // [Stupid App] Starting up...
+appLogger("Running smoothly..."); // [Stupid App] Running smoothly...
+`}
+        </CodeSnippet>
+        <AlertBox showIcon={false}>
+          Closures can store information across multiple function calls. Like in
+          the above code, we can store the name of the application in a closure
+          variable and use it to log messages from different parts of the
+          application.
+        </AlertBox>
+        <AlertBox mode="info" className="font-bold text-md">
+          When a function is created, JavaScript maintains a reference to its
+          lexical environment. The lexical environment contains:
+          <MotionList className="text-blue-400 my-3 text-justify">
+            <ListItem>The function's local variables.</ListItem>
+            <ListItem>References to variables in its parent scope.</ListItem>
+          </MotionList>
+          If the inner function (closure) is returned or assigned to another
+          variable, the lexical environment remains in memory, allowing the
+          closure to access the variables even after the outer function has
+          finished execution.
         </AlertBox>
       </>
     )
