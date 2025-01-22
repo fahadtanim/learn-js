@@ -1823,8 +1823,8 @@ appLogger("Running smoothly..."); // [Stupid App] Running smoothly...
           application.
         </AlertBox>
         <AlertBox mode="info" className="font-bold text-md">
-          When a function is created, JavaScript maintains a reference to its
-          lexical environment. The lexical environment contains:
+          NOTE: When a function is created, JavaScript maintains a reference to
+          its lexical environment. The lexical environment contains:
           <MotionList className="text-blue-400 my-3 text-justify">
             <ListItem>The function's local variables.</ListItem>
             <ListItem>References to variables in its parent scope.</ListItem>
