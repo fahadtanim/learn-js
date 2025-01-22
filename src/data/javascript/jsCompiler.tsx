@@ -1864,18 +1864,18 @@ appLogger("Running smoothly..."); // [Stupid App] Running smoothly...
         </Typography>
         <Typography mode="h6">Syntax:</Typography>
         <CodeSnippet>
-          {`(function () {
+          {`// With function declaration
+          (function () {
+  // Code here runs immediately
+})();
+
+//Alternatively with Arrow function
+(() => {
   // Code here runs immediately
 })();
 `}
         </CodeSnippet>
-        <Typography>Alternatively:</Typography>
-        <CodeSnippet>
-          {`(() => {
-  // Code here runs immediately
-})();
-`}
-        </CodeSnippet>
+
         <Typography mode="h6">Example:</Typography>
         <CodeSnippet>
           {`// Basic IIFE
@@ -1907,6 +1907,81 @@ appLogger("Running smoothly..."); // [Stupid App] Running smoothly...
 console.log(message); // ReferenceError: message is not defined
 `}
         </CodeSnippet>
+        <Typography mode="h6">2. Create Block Scope in ES5:</Typography>
+        <Typography>
+          Before ES6 introduced <Pill>let</Pill> and <Pill>const</Pill>,
+          developers used IIFEs to create block-scoped variables.
+        </Typography>
+        <CodeSnippet>
+          {`for (var i = 0; i < 3; i++) {
+  (function (index) {
+    setTimeout(() => {
+      console.log(index);
+    }, 1000);
+  })(i);
+}
+
+/*Output:
+0
+1
+2
+*/
+`}
+        </CodeSnippet>
+        <Typography mode="h6">3. Create a Module Pattern</Typography>
+        <Typography>
+          IIFEs can help define modules with private and public members.
+        </Typography>
+        <CodeSnippet>{`const CounterModule = (function () {
+  let count = 0;
+
+  return {
+    increment: () => ++count,
+    decrement: () => --count,
+    getCount: () => count,
+  };
+})();
+
+console.log(CounterModule.increment()); // 1
+console.log(CounterModule.getCount());  // 1
+console.log(CounterModule.decrement()); // 0`}</CodeSnippet>
+        <Typography mode="h6">4. Initialization Code</Typography>
+        <Typography>
+          Use IIFEs for one-time setup tasks, such as configuration.
+        </Typography>
+        <CodeSnippet>{`const config = (function () {
+  const apiKey = "12345";
+  return {
+    getApiKey: () => apiKey,
+  };
+})();
+
+console.log(config.getApiKey()); // 12345`}</CodeSnippet>
+        <Typography mode="h6">5. Polyfills </Typography>
+        <Typography>
+          IIFEs are commonly used to define polyfills, ensuring compatibility
+          across environments
+        </Typography>
+        <CodeSnippet>
+          {`(function () {
+  if (!Array.prototype.customMethod) {
+    Array.prototype.customMethod = function () {
+      console.log("Custom method added");
+    };
+  }
+})();
+`}
+        </CodeSnippet>
+        <Typography mode="h6">6. Asynchronous Execution </Typography>
+        <Typography>
+          IIFEs can execute immediately to handle asynchronous operations or set
+          up event listeners.
+        </Typography>
+        <CodeSnippet>{`(async function () {
+  const data = await fetch("https://api.example.com/data");
+  console.log(await data.json());
+})();
+`}</CodeSnippet>
       </>
     )
   },

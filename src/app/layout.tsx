@@ -43,7 +43,7 @@ export default function RootLayout({
           <div className="container max-h-full overflow-hidden md:ml-80">
             <Suspense
               fallback={
-                <div className="p-8 md:p-0">
+                <div className="p-8 md:p-4">
                   <LoadingSkeleton />
                 </div>
               }
