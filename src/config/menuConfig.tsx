@@ -5,7 +5,7 @@ export const JsMenu = [
     id: 'js-1',
     groupLabel: 'JavaScript',
     groupLink: '/javascript',
-    icon: FaSquareJs,
+    icon: <FaSquareJs />,
     isGroup: false,
     groupItems: []
   },

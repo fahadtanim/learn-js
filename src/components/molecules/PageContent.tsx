@@ -13,7 +13,7 @@ export default function PageContent({ children }: PageContentProps) {
   return (
     <>
       <div
-        className="h-[80vh] overflow-y-scroll overflow-x-hidden pr-4"
+        className="h-[80vh] overflow-y-scroll overflow-x-hidden pr-4 pl-8 md:pl-4"
         ref={scrollableDivRef}
       >
         <div className="container">

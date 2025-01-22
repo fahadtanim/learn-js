@@ -1,12 +1,12 @@
 'use client'
 
-import { JsMenu } from '@/config/menuConfig'
-import { CustomFlowbiteTheme, Sidebar } from 'flowbite-react'
+import { CustomFlowbiteTheme } from 'flowbite-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import { Button } from '../atoms'
+import { Button, Sidebar } from '../atoms'
+import { JsMenu } from '@/config/menuConfig'
 
 const SidebarTheme: CustomFlowbiteTheme['sidebar'] = {
   root: {
@@ -15,7 +15,7 @@ const SidebarTheme: CustomFlowbiteTheme['sidebar'] = {
       on: 'w-80',
       off: 'w-80'
     },
-    inner: 'overflow-y-auto overflow-x-hiddenpx-3 py-4 bg-gray-800 w-80'
+    inner: 'px-3 py-4 bg-gray-800 w-80 overflow-x-hidden'
   },
   collapse: {
     button:
@@ -76,7 +76,7 @@ const SidebarTheme: CustomFlowbiteTheme['sidebar'] = {
     base: ''
   },
   itemGroup: {
-    base: 'mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-gray-700'
+    base: 'mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 border-gray-700'
   },
   logo: {
     base: 'mb-5 flex items-center pl-2.5',
@@ -89,78 +89,12 @@ const SidebarTheme: CustomFlowbiteTheme['sidebar'] = {
 }
 
 export default function AppSidebar() {
-  const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const menuConfig = pathname.includes('/javascript') ? JsMenu : []
 
   return (
     <>
-      <div
-        className={`relative !z-10 ${open ? 'flex-shrink-0 w-[320px]' : 'sm:w-0 w-0 md:w-[320px]'} min-h-[calc(100vh-54px)] overflow-x-hidden bg-gray-800 transition-all duration-300 ease-in-out`}
-      >
-        <Sidebar
-          aria-label="Sidebar with multi-level dropdown example"
-          theme={SidebarTheme}
-        >
-          <Sidebar.Items>
-            <Sidebar.ItemGroup>
-              {menuConfig.map((item, index) => {
-                if (item.isGroup) {
-                  return (
-                    <Sidebar.Collapse
-                      key={index}
-                      label={`${item.id} - ${item.groupLabel}`}
-                      open={true}
-                    >
-                      {item.groupItems.map((subItem, subIndex) => {
-                        const active = pathname === subItem.link
-                        return (
-                          <Sidebar.Item
-                            href={subItem.link}
-                            key={subIndex}
-                            as={Link}
-                            className={`${active ? 'bg-gray-700' : ''}`}
-                            onClick={() => setOpen(false)}
-                          >
-                            {`${subItem.id} - ${subItem.label}`}
-                          </Sidebar.Item>
-                        )
-                      })}
-                    </Sidebar.Collapse>
-                  )
-                } else {
-                  const active = pathname === item.groupLink
-                  return (
-                    <Sidebar.Item
-                      href={item.groupLink}
-                      key={index}
-                      icon={item.icon}
-                      as={Link}
-                      onClick={() => setOpen(false)}
-                      className={`${active ? 'bg-gray-700' : ''}`}
-                    >
-                      {item.groupLabel}
-                    </Sidebar.Item>
-                  )
-                }
-              })}
-            </Sidebar.ItemGroup>
-          </Sidebar.Items>
-        </Sidebar>
-      </div>
-      <div className="md:hidden sm:block relative ml-[-1rem] p-0 mt-3">
-        <Button
-          mode="primary"
-          className={`shadow-lg rounded-tr-full rounded-br-full`}
-          onClick={() => setOpen(!open)}
-        >
-          {open ? (
-            <FaChevronLeft className="text-gray-300 w-6 h-6" />
-          ) : (
-            <FaChevronRight className="text-gray-300 w-6 h-6" />
-          )}
-        </Button>
-      </div>
+      <Sidebar menuConfig={menuConfig} pathname={pathname} />
     </>
   )
 }

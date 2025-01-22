@@ -7,6 +7,7 @@ import Links from './Links'
 import Skeleton from './Skeleton'
 import Button from './Button'
 import Pill from './Pill'
+import Sidebar from './Sidebar'
 
 export {
   AlertBox,
@@ -17,5 +18,6 @@ export {
   Links,
   Skeleton,
   Button,
-  Pill
+  Pill,
+  Sidebar
 }

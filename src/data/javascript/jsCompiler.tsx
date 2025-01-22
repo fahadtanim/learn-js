@@ -1848,8 +1848,65 @@ appLogger("Running smoothly..."); // [Stupid App] Running smoothly...
           Immediately Invoked
           <Typography mode="gradient"> Function Expression</Typography>
         </PostTitle>
-        <Typography>Still Writing In Progress...</Typography>
-        <LoadingSkeleton></LoadingSkeleton>
+        <Typography>
+          An{' '}
+          <Typography mode="b-text">
+            Immediately Invoked Function Expression (IIFE)
+          </Typography>{' '}
+          is a JavaScript function that is executed immediately after it is
+          defined.
+        </Typography>
+        <Typography>
+          The syntax involves wrapping the function in parentheses to make it an{' '}
+          <Typography mode="b-text">expression</Typography> and then appending
+          parentheses to{' '}
+          <Typography mode="b-text">invoke it immediately</Typography>.
+        </Typography>
+        <Typography mode="h6">Syntax:</Typography>
+        <CodeSnippet>
+          {`(function () {
+  // Code here runs immediately
+})();
+`}
+        </CodeSnippet>
+        <Typography>Alternatively:</Typography>
+        <CodeSnippet>
+          {`(() => {
+  // Code here runs immediately
+})();
+`}
+        </CodeSnippet>
+        <Typography mode="h6">Example:</Typography>
+        <CodeSnippet>
+          {`// Basic IIFE
+          (function () {
+  console.log("This is an IIFE");
+})(); // This is an IIFE
+
+// IIFE with parameters
+(function (name) {
+  console.log(\`Hello, \${name}!\`);
+})("Alice"); // Hello, Alice!
+
+
+`}
+        </CodeSnippet>
+        <Typography mode="h5">So, Why Use an IIFE?</Typography>
+        <Typography mode="h6">1. Avoid Polluting the Global Scope</Typography>
+        <Typography>
+          Variables defined inside an IIFE are not accessible from the global
+          scope, preventing namespace conflicts. This is one of the most common
+          use cases for IIFEs.
+        </Typography>
+        <CodeSnippet>
+          {`(function () {
+  const message = "I'm inside an IIFE";
+  console.log(message);
+})();
+
+console.log(message); // ReferenceError: message is not defined
+`}
+        </CodeSnippet>
       </>
     )
   },

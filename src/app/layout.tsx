@@ -40,8 +40,14 @@ export default function RootLayout({
         <AppNavbar />
         <div className="flex min-h-[calc(100vh-54px)]">
           <AppSidebar />
-          <div className="container max-h-full overflow-hidden">
-            <Suspense fallback={<LoadingSkeleton />}>
+          <div className="container max-h-full overflow-hidden md:ml-80">
+            <Suspense
+              fallback={
+                <div className="p-8 md:p-0">
+                  <LoadingSkeleton />
+                </div>
+              }
+            >
               <div className="container">{children}</div>
             </Suspense>
           </div>
