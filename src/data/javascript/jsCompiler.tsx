@@ -1995,8 +1995,211 @@ console.log(config.getApiKey()); // 12345`}</CodeSnippet>
         <PostTitle>
           Higher Order<Typography mode="gradient"> Function</Typography>
         </PostTitle>
-        <Typography>Still Writing In Progress...</Typography>
-        <LoadingSkeleton></LoadingSkeleton>
+        <Typography className="!mb-2">
+          A higher order function is a function is a function that either:
+        </Typography>
+        <MotionList className="!mb-2">
+          <ListItem>
+            <Typography mode="b-text">
+              Accepts one or more function as an argument
+            </Typography>
+          </ListItem>
+          <ListItem>
+            <Typography mode="b-text">
+              Returns a function as a result
+            </Typography>
+          </ListItem>
+        </MotionList>
+        <Typography>
+          This concept is rooted in functional programming and makes functions
+          more flexible and reusable.
+        </Typography>
+        <Typography>
+          Higher order functions are commonly used to compose multiple functions
+          together to create more complex behaviors. They can also be used to
+          implement higher-order components in React or other JavaScript
+          frameworks.
+        </Typography>
+        <Typography mode="h6">Example:</Typography>
+        <CodeSnippet>
+          {`// Function as Arguments
+          function greet(name, callback) {
+  console.log(\`Hello, \${name}\`);
+  callback();
+}
+
+function sayGoodbye() {
+  console.log("Goodbye!");
+}
+
+greet("Alice", sayGoodbye);
+
+// Output:
+// Hello, Alice
+// Goodbye!
+
+          `}
+        </CodeSnippet>
+        <AlertBox>
+          In the above example, the function <Pill>greet</Pill>is a higher order
+          function, it accepts <Pill>sayGoodbye</Pill> as an argument (callback
+          function) and invokes it.
+        </AlertBox>
+        <CodeSnippet>
+          {`// Function as Return
+          function multiplier(factor) {
+  return function (number) {
+    return number * factor;
+  };
+}
+
+const double = multiplier(2);
+const triple = multiplier(3);
+
+console.log(double(5)); // 10
+console.log(triple(5)); // 15
+
+          `}
+        </CodeSnippet>
+        <AlertBox>
+          In the above example, <Pill>multiplier</Pill>is a higher-order
+          function because it returns a new function. The returned function
+          retains access to the <Pill>factor</Pill> variable through{' '}
+          <Typography mode="b-text">closure</Typography>.
+        </AlertBox>
+        <Typography mode="h5">Use Cases:</Typography>
+        <Typography mode="h6">1. Callback Functions</Typography>
+        <Typography>
+          A <Typography mode="b-text">callback function</Typography> is a
+          function passed as an argument to another function, where it is
+          <Typography mode="b-text"> executed later</Typography> (often after an
+          asynchronous operation or event). So, basically... When the higher
+          order function get's function as an argument that function is called
+          callback function or inshort callback.
+        </Typography>
+        <Typography>
+          Callbacks enable non-blocking behavior, event handling, and code
+          reusability by allowing functions to delegate tasks or respond to
+          outcomes. Callback functions are commonly used in asynchronous
+          programming to execute code after a task has completed. They are also
+          used to implement event handlers in web applications.
+        </Typography>
+        <CodeSnippet>
+          {`
+          function simpleConsole(){
+          console.log("This runs after 2 seconds");
+          }
+          setTimeout(simpleConsole, 2000);
+          `}
+        </CodeSnippet>
+        <AlertBox>
+          In the above example, the function <Pill>simpleConsole</Pill>is a
+          callback function because it is passed as an argument to another
+          function. And the function <Pill>simpleConsole</Pill>is executed later
+          after 2 seconds. So the <Pill>setTimeout()</Pill>function is a higher
+          order function which utilizes callbacks to give us a way to execute
+          asynchronous non-blocking operation.
+        </AlertBox>
+        <CodeSnippet>
+          {`
+          document.getElementById("button").addEventListener("click", () => {
+  console.log("Button clicked!");
+});
+
+          `}
+        </CodeSnippet>
+        <AlertBox>
+          In the above example, <Pill>addEventListener</Pill>is a higher-order
+          function. It accepts a callback function to execute when the event
+          occurs.
+        </AlertBox>
+        <Typography mode="h6">2. Function Composition</Typography>
+        <Typography>
+          Combine smaller functions to buildd more complex logic.
+        </Typography>
+        <CodeSnippet>
+          {`const add = (x) => x + 2;
+const multiply = (x) => x * 3;
+
+const compose = (f, g) => (x) => f(g(x));
+
+const addThenMultiply = compose(multiply, add);
+
+console.log(addThenMultiply(5)); // (5 + 2) * 3 = 21
+`}
+        </CodeSnippet>
+
+        <Typography mode="h6">3. Custom utilities</Typography>
+        <Typography>
+          We can custom utility function like debounce and throttle. Debounce:
+          Limits how often a function can be called (e.g. during input events)
+        </Typography>
+        <CodeSnippet>
+          {`function debounce(func, delay) {
+  let timer;
+  let counter = 0;
+    return function (...args) {
+    clearTimeout(timer);
+    counter++;
+    timer = setTimeout(() => func(counter,...args), delay);
+  };
+}
+
+const log = debounce((counter) => console.log(counter,"Debounced!"), 1000);
+log();
+log();
+log(); // Only the last call logs "3 Debounced!" after 1 second.`}
+        </CodeSnippet>
+        <Typography mode="h6">4. Currying</Typography>
+        <Typography>
+          Transforms a function so it can be partially applied.
+        </Typography>
+        <CodeSnippet>
+          {`
+          function curry(func) {
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      return func(...args);
+    } else {
+      return (...nextArgs) => curried(...args, ...nextArgs);
+    }
+  };
+}
+
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+const curriedSum = curry(sum);
+
+console.log(curriedSum(1)(2)(3)); // 6
+
+          `}
+        </CodeSnippet>
+        <Typography>
+          We will take a look at the next lecture what is currying and why do we
+          use it?
+        </Typography>
+        <AlertBox showIcon={false}>
+          <Typography mode="b-text">
+            Advantages of Higher-Order Functions
+          </Typography>
+          <MotionList className="text-gray-300 mt-2">
+            <ListItem>
+              <Typography mode="b-text">Code Reusability:</Typography> Avoid
+              repeating logic by passing functions as arguments.
+            </ListItem>
+            <ListItem>
+              <Typography mode="b-text">Abstraction:</Typography> Hide
+              implementation details, making code cleaner and more readable.
+            </ListItem>
+            <ListItem>
+              <Typography mode="b-text">Flexibility: </Typography>
+              Functions can be dynamic, configurable, and tailored to specific
+              needs.
+            </ListItem>
+          </MotionList>
+        </AlertBox>
       </>
     )
   },
