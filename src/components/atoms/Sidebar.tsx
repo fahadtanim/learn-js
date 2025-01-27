@@ -138,7 +138,7 @@ type SidebarDropdownProps = {
 }
 
 function SidebarDropdown({ label, children }: SidebarDropdownProps) {
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState(true)
   return (
     <li>
       <button
