@@ -2213,8 +2213,182 @@ console.log(curriedSum(1)(2)(3)); // 6
         <PostTitle>
           <Typography mode="gradient">Currying</Typography>
         </PostTitle>
-        <Typography>Still Writing In Progress...</Typography>
-        <LoadingSkeleton></LoadingSkeleton>
+        <Typography>
+          <Typography mode="b-text">Currying in JavaScript</Typography> is a
+          functional programming technique where a function that takes multiple
+          arguments is transformed into a sequence of nested functions, each
+          taking a single argument. This allows for{' '}
+          <Typography mode="b-text">partial application</Typography>, where you
+          can fix a subset of arguments upfront and create specialized
+          functions. So instead of having a function like <Pill>fn(a,b,c)</Pill>
+          , you have <Pill>fn(a)(b)(c)</Pill>. So, Instead of calling a function
+          with all arguments at once, you call a sequence of functions, each
+          with one argument at a time.
+        </Typography>
+        <Typography>
+          Let's understand it more clearly with an example. Let's say I have a
+          function that adds two numbers. Normally, it's function
+        </Typography>
+        <CodeSnippet>
+          {`
+          function add(a, b) { return a + b; }
+          `}
+        </CodeSnippet>
+        <Typography>
+          Now the curried version of this funciton would be..
+        </Typography>
+        <CodeSnippet>{`function addCurried(a) { return function(b) { return a + b; }; }`}</CodeSnippet>
+        <Typography>
+          Now, we can use this function to add two numbers. Let's say we want to
+          add 5 and 10.
+        </Typography>
+        <CodeSnippet>{`addCurried(5)(10); // 15`}</CodeSnippet>
+        <Typography>
+          Let's see how this works step by step. The first function takes{' '}
+          <Pill>a</Pill>and returns another function that takes <Pill>b</Pill>
+          and returns the sum. So each function returns another function until
+          all arguments are collected. That allows partial application. For
+          instance, you can do
+        </Typography>
+        <CodeSnippet>{`const addFive = addCurried(5);`}</CodeSnippet>
+        <Typography>Now,</Typography>
+        <CodeSnippet>{`addFive(10); // 15`}</CodeSnippet>
+        <AlertBox showIcon={false}>
+          Wait, what's the difference between currying and partial application?
+          Currying transforms a function into a sequence of functions each with
+          a single argument. Partial application is when you fix a certain
+          number of arguments of a function, producing another function of
+          smaller arity. So currying is a form of partial application, but they
+          aren't the same. Partial application can be done with any number of
+          arguments, while currying strictly breaks down the function into
+          single-argument functions.
+        </AlertBox>
+        <AlertBox mode="info">
+          In Curried funciton, each function returns another function until all
+          parameters are provided. Then, when all arguments are supplied, the
+          final result is computed.
+        </AlertBox>
+        <Typography mode="h5">
+          <Typography mode="gradient">Use Cases:</Typography>
+        </Typography>
+        <Typography mode="h6">Reusable Configuration</Typography>
+        <Typography>
+          Currying helps create pre-configured functions. For example, a fetch
+          request that needs a base URL and headers. You could curry the
+          function to first take the base URL, then headers, then the endpoint.
+        </Typography>
+        <CodeSnippet>
+          {`
+          const createApiClient = baseUrl => headers => endpoint => 
+  fetch(\`\${baseUrl}\${endpoint}\`, { headers });
+
+// Configure once
+const prodApi = createApiClient('https://api.example.com');
+const prodV2Api = createApiClient('https://api.example.com/v2');
+const authedProdApi = prodApi({ Authorization: 'Bearer token' });
+const authedProdV2Api = prodV2Api({ Authorization: 'Bearer token' });
+
+// Reuse
+authedProdApi('/users'); // Fetches https://api.example.com/users
+authedProdV2Api('/users'); // Fetches https://api.example.com/v2/users
+
+          `}
+        </CodeSnippet>
+        <Typography mode="h6">Event Logging</Typography>
+        <Typography>
+          Currying simplifies logging by predefining categories or actions.
+          Suppose you have a function that logs events with a specific category
+          and action. Instead of passing the category every time, you can curry
+          it. Like, create a function that takes the category first, then
+          returns a function that takes the action and the label.
+        </Typography>
+        <CodeSnippet>
+          {`const logEvent = category => action => label => 
+  console.log({ category, action, label });
+
+// Predefine a category
+const userLogger = logEvent('user');
+userLogger('click')('profile'); // { category: 'user', action: 'click', label: 'profile' }`}
+        </CodeSnippet>
+        <Typography mode="h6">Utilities</Typography>
+        <Typography>
+          Create reusable validators for forms or data. you could have a
+          function that checks if a value meets certain criteria. For example, a
+          validator that checks min length:
+        </Typography>
+        <CodeSnippet>
+          {` const minLength = min => value =>
+          value.length >= min;`}
+        </CodeSnippet>
+        <Typography>Then, </Typography>
+        <CodeSnippet>{`const hasMin6 = minLength(6);`}</CodeSnippet>
+        <Typography>
+          Then, and use <Pill>hasMin6('password')</Pill> to check if it's at
+          least 6 characters.
+        </Typography>
+        <CodeSnippet>{`console.log(hasMin6('password')); // true`}</CodeSnippet>
+        <Typography>So, the complete example would be...</Typography>
+        <CodeSnippet>
+          {`const minLength = min => value => value.length >= min;
+const isEmail = regex => value => regex.test(value);
+
+// Preconfigure validators
+const hasMin6Chars = minLength(6);
+const isValidEmail = isEmail(/^\S+@\S+\.\S+$/);
+
+console.log(hasMin6Chars('password')); // true
+console.log(isValidEmail('test@example.com')); // true`}
+        </CodeSnippet>
+        <Typography mode="h5"> Functional Pipelines</Typography>
+        <Typography>
+          Currying works well with array methods like map or filter:
+        </Typography>
+        <CodeSnippet>
+          {`
+          const multiply = x => y => x * y;
+const double = multiply(2);
+const triple = multiply(3);
+
+[1, 2, 3].map(double); // [2, 4, 6]
+[1, 2, 3].map(triple); // [3, 6, 9]
+          `}
+        </CodeSnippet>
+
+        <Typography mode="h5">
+          Advanced: <Typography mode="gradient">Generic Currying</Typography>
+        </Typography>
+        <Typography>Here's a way to curry any function dynamically:</Typography>
+        <CodeSnippet>
+          {`
+          const curry = (fn) => {
+  return function curried(...args) {
+    if (args.length >= fn.length) return fn(...args);
+    return (...args2) => curried(...args, ...args2);
+  };
+};
+
+// Usage
+const multiply = (a, b, c) => a * b * c;
+const curriedMultiply = curry(multiply);
+
+console.log(curriedMultiply(2)(3)(4)); // 24
+console.log(curriedMultiply(2, 3)(4)); // 24 (mix of args)
+          `}
+        </CodeSnippet>
+
+        <AlertBox showIcon={false}>
+          <Typography mode="b-text">When to avoid Currying?</Typography>
+          <MotionList className="mt-2 text-gray-300">
+            <ListItem>
+              <Typography mode="b-text">Overcomplication: </Typography> Don’t
+              curry if it makes code harder to read.
+            </ListItem>
+            <ListItem>
+              <Typography mode="b-text">Variable Arguments: </Typography>{' '}
+              Currying works best for fixed-arity functions.
+            </ListItem>
+          </MotionList>
+        </AlertBox>
       </>
     )
   },

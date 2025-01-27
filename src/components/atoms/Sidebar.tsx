@@ -37,7 +37,7 @@ export default function Sidebar({
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-800">
           {
-            <ul className="space-y-2 font-medium" key={1}>
+            <ul className="space-y-2 font-medium">
               {menuConfig.map((item, index) => {
                 if (item.isGroup) {
                   return (
